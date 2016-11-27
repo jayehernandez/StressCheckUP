@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>Stress Check UP</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+</head>
+<style>
+h1 {
+  margin-bottom: 0.5em;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #4b3f72;
+}
+.emphasis {
+  font-weight: bold;
+  display: inline-block;
+  color:#edb850;
+}
+</style>
+<body>
+<!-- MENU -->
+<div class="ui fixed inverted menu">
+  <div class="ui container">
+    <a href="/" class="header item">
+      <i class="treatment icon"></i>
+      Stress Check UP
+    </a>
+    <a href="/" class="item">Home</a>
+    <div class="ui simple dropdown item">
+      About <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item" href="{{ url_for('project') }}">Project</a>
+        <a class="item" href="{{ url_for('facts') }}">Facts and Statistics</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Contents -->
+  <br><br><br><br>
+  <div class="ui main text container">
+	<!-- STRESSED -->
+	{% if result is equalto "Stressed" %}
+  	<h1>You are probably <div class="emphasis">stressed.</div></h1>
+  	<p>Stress is your body’s natural reaction to demand. Simply put it, your body’s <b style="color:#19647e">“fight or flight” alarm</b>. Usually, stress encourages you to get out of danger situations or encourage you to remove your source of stress like work. Sometimes though, your “fight or flight” system doesn’t shut off, and that’s when it becomes a problem.</p>
+    <b style="color:#19647e">People who were diagnosed as stressed mostly answered:</b>
+    <div class="ui three column grid">
+      <div class="column">
+      <ul>
+        <li>Anxiety</li>
+        <li>Restlessness</li>
+        <li>Frustration</li>
+      </ul>
+      </div>
+      <div class="column">
+      <ul>
+        <li>Inability to focus</li>
+        <li>Irritability</li>
+        <li>Irregular sleeping patterns</li>
+      </ul>
+      </div>
+      <div class="column">
+      <ul>
+        <li>Mood swings</li>
+        <li>Irregular eating patterns</li>
+        <li>High workload</li>
+      </ul>
+      </div>
+    </div>
+    <div class="ui two column grid">
+    <div class="ui column segment">
+    <div class="ui teal ribbon label"><h4>Steps you can take to manage stress</h4></div>
+    <div class="ui divided very relaxed list">
+    <div class="item">
+      <i class="chevron right icon"></i>
+      <div class="content">Take short breaks</div>
+    </div>
+    <div class="item">
+      <i class="chevron right icon"></i>
+      <div class="content">Practice meditation/mindfulness or yoga</div>
+    </div>
+    <div class="item">
+      <i class="chevron right icon"></i>
+      <div class="content">Engage in hobbies to express stress positively</div>
+    </div>
+    <div class="item">
+      <i class="chevron right icon"></i>
+      <div class="content">Engage in hobbies for recreation</div>
+    </div>
+    </div>
+    </div>
+    <div class="ui middle aligned column">
+    <div class="ui attached raised segment">
+    <h3>Do you think this is true?</h3>
+    Was this diagnosis helpful in any way? <br>
+    </div>
+    <div class="ui two bottom attached buttons">  
+    <div class="ui button">Yes</div>
+    <div class="ui button">No</div>
+    </div><br>
+    <div class="ui large button toggle">Learn more about stress here <i class="right arrow icon"></i></div>
+    </div>
+    </div>
+
+  	<!-- BURNOUT -->
+	{% elif result is equalto "Burnout" %}
+	<h1>You are probably experiencing burnout.</h1>
+  	<p>Burnout is kind of like feeling high level stress and fatigue ALL AT ONCE accompanied by regret or extreme frustration. It is a cycle of negative emotions, which is an indicator that you may no longer see the point in continuing what you’re doing. Rest is very much needed at this point.</p>
+  	<h2>Symptoms of burnout include:</h2>
+    <div class="ui three column grid">
+    <div class="column">
+    Apathy
+    <br>Withdrawal
+    <br>Despair
+    <br>Disillusionment
+    </div><div class="column">
+    Depression
+    <br>Self-doubt
+    <br>Negative outlook
+    </div><div class="column">
+    Change in routine
+    <br>Substance abuse
+    <br>Escaping responbilities
+    </div>
+    </div>
+    <br><br>
+    <div class="ui centered grid">
+    <div class="ui large button toggle">Was this helpful?</div>
+    <div class="ui large button toggle">Learn more about burnout here <i class="right arrow icon"></i></div>
+    </div>	
+	<!-- FATIGUE -->
+	{% elif result is equalto "Fatigue" %}
+	<h1>You are probably experiencing fatigue.</h1>
+  	<p>Simply put, fatigue is being in the constant state of physical exhaustion. It is your body’s natural cry for much needed rest or time to recover and think.</p>
+  	<h2>Symptoms of fatigue include:</h2>
+    <div class="ui three column grid">
+    <div class="column">
+    Inability to focus
+    <br>Lack of energy and motivation
+    <br>Substance abuse
+    <br>Lack of sleep/irregular sleeping patterns
+    <br>Irregular eating habits
+    <br>Medication
+    <br>Excess/lack of physical activities
+    </div><div class="column">
+    Chest pain
+    <br>Shortness of breath
+    <br>Irregular heartbeat
+    <br>Feeling of passing out
+    <br>Abdominal, back, pelvic pain
+    <br>Extreme – headache + bleeding
+    </div><div class="column">
+    Restlessness
+    <br>Short memory and attention span
+    <br>Sluggish, slow reaction, micro sleep
+    <br>Depression
+    <br>Irritability
+    <br>indecisiveness
+    </div>
+    </div>
+    <br><br>
+    <div class="ui centered grid">
+    <div class="ui large button toggle">Was this helpful?</div>
+    <div class="ui large button toggle">Learn more about fatigue here <i class="right arrow icon"></i></div>
+    </div>	
+	<!-- NORMAL -->
+	{% elif result is equalto "Normal" %}
+	<h1>You are probably normal.</h1>
+	<p>Even if you are experiencing some of the things mentioned in the test, there is no sign of stress, burnout or fatigue.
+	<br><br>
+    <div class="ui centered grid">
+    <div class="ui large button toggle">Was this helpful?</div>
+    <div class="ui large button toggle">Learn more here <i class="right arrow icon"></i></div>
+    </div>	
+	{% endif %}
+</div>
+</body>
+</html>
