@@ -83,10 +83,9 @@ def Testing():
 	print "score:", clf.score(X_test,y_test) 
 
 #--- para sa software ---#
-def Predicting(array):
+def Predicting(array=[[0,0,1,1,1,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,1]]):
 	Z = array
 	pred = clf.predict(Z)
-	# print clf.decision_path(Z)
 	print pred[0]
 	return pred[0]
 
@@ -133,6 +132,6 @@ if len(sys.argv) > 1:
 	if sys.argv[1] == "test":
 		Testing()
 	elif sys.argv[1] == "pred":
-		Predicting(array)
+		Predicting()
 	elif sys.argv[1] == "utest":
 		unitTesting()
