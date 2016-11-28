@@ -17,6 +17,7 @@
 <style>
 body{
   white-space:nowrap;
+  overflow:hidden;
 }
 .masthead.segment {
     min-height: 700px;
@@ -111,7 +112,7 @@ h1 {
   <div class="question"><div class="ui centered grid"><div class="pusher">
   <div class="yes ui text container">
       <h1><b>Stress Check UP</b></h1>
-      <h2>Unibersidad ng Pilipinas</h2>
+      <h2>A Stress Diagnosis App</h2>
       <div class="ui huge button toggle"><i class="treatment icon"></i>Get Checked</div></a>
     </div>
   </div></div></div>
@@ -195,7 +196,7 @@ h1 {
   {% endfor %}{{checker(form.hig)}}</div></div></div>
   <!-- NAUSEA -->
   <div class="question"><div class="ui centered grid"><div class="pusher">
-  <h1>Are you experiencing or have you experience <div class="emphasis">nausea</div> recently?</h1>{% for s in form.nau %}
+  <h1>Are you experiencing or have you experienced <div class="emphasis">nausea</div> recently?</h1>{% for s in form.nau %}
   {% if loop.first %}{{s.label(class="ui huge button toggle")}}{{s}}{% endif %}
   {% if loop.last %}{{s.label(class="ui huge button toggle")}}{{s}}{% endif %}
   {% endfor %}{{checker(form.nau)}}</div></div></div>
@@ -207,7 +208,7 @@ h1 {
   {% endfor %}{{checker(form.hea)}}</div></div></div>
   <!-- BLEEDING -->
   <div class="question"><div class="ui centered grid"><div class="pusher">
-  <h1>Do you experience <div class="emphasis">bleeding</div>?</h1>{% for s in form.ble %}
+  <h1>Do you experience <div class="emphasis">bleeding</div>(unusual cuts or scars)?</h1>{% for s in form.ble %}
   {% if loop.first %}{{s.label(class="ui huge button toggle")}}{{s}}{% endif %}
   {% if loop.last %}{{s.label(class="ui huge button toggle")}}{{s}}{% endif %}
   {% endfor %}{{checker(form.ble)}}</div></div></div>

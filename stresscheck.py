@@ -83,8 +83,8 @@ def Testing():
 	print "score:", clf.score(X_test,y_test) 
 
 #--- para sa software ---#
-def Predicting(array=[[0,0,1,1,1,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,1]]):
-	Z = array
+def Predicting(array=[1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,0,1,0,0,1]):
+	Z = [array]
 	pred = clf.predict(Z)
 	print pred[0]
 	return pred[0]
@@ -113,7 +113,7 @@ def unitTestWrite(array, yesno, predAns, truAns):
 		if yesno == 1:
 			array.insert(0,predAns)
 		else:
-			array.insert(1,truAns)
+			array.insert(0,truAns)
 		writer.writerow(array)
 
 def unitTesting():

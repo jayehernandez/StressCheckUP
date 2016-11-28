@@ -46,10 +46,19 @@ h1 {
 <!-- Page Contents -->
   <br><br><br><br>
   <div class="ui main text container">
-	<!-- STRESSED -->
-	{% if result is equalto "Burnout" %}
-  	<h1>You are probably experiencing <div class="emphasis">burnout</div></h1>
-  	<p>Burnout is kind of like feeling high level stress and fatigue <b style="color:#19647e">all at once</b> accompanied by regret or extreme frustration. It is a cycle of negative emotions, which is an indicator that you may no longer see the point in continuing what you’re doing. Rest is very much needed at this point.</p>
+  <div class="ui segment">
+  <h2 style="color:#19647e">What do you think the result should be?</h2>
+  <p>Our program isn't 100% accurate. Hey, it's AI. Please input what you think you should be classified as.</p>
+  <form method="POST" action="">
+  {{ form.csrf_token }}
+  {{form.tru}}
+  <input type="submit" value="Enter" class="ui large button toggle">
+  </form>
+</div>
+  <!-- STRESSED -->
+  {% if result is equalto "Burnout" %}
+    <h1>You are probably experiencing <div class="emphasis">burnout</div></h1>
+    <p>Burnout is kind of like feeling high level stress and fatigue <b style="color:#19647e">all at once</b> accompanied by regret or extreme frustration. It is a cycle of negative emotions, which is an indicator that you may no longer see the point in continuing what you’re doing. Rest is very much needed at this point.</p>
     <h3 style="color:#19647e">People who were diagnosed as burned out mostly answered:</h3>
     <div class="ui three column grid">
       <div class="column">
@@ -103,25 +112,12 @@ h1 {
     </div>
     </div>
     </div>
-    <div class="ui middle aligned column">
-     <div class="ui segment">
-    <h3 style="color:teal">Do you think this is true?</h3>
-    Was this diagnosis helpful in any way? Or do you think there was some kind of mistake?<br><br>
-    <center>  
-    <form method="POST"> 
-      {{ form.hidden_tag() }}
-      {{form.yes(class="positive ui large button toggle")}} 
-      {{form.no(class="negative ui large button")}}
-    </form> </center>
-    </div>
-    <br>
+       <div class="ui middle aligned column">
     <div class="ui fluid basic yellow button toggle">Learn more about burnout here <i class="right arrow icon"></i></div>
-    </div>
-    </div>
     <br>
     <div class="ui center aligned stacked secondary segment">
       If burnout becomes unmanageable, you can always visit the <b>University Health Services</b> and <b>UP Office of Counseling and Guidance</b>.<br>
-      <div class="ui large horizontal divided list" style="color:#800000">
+      <div class="ui large horizontal list" style="color:#800000">
       <div class="item">
         <i class="doctor icon"></i>
         <div class="content">
@@ -136,10 +132,12 @@ h1 {
       </div>
     </div>
     </div>
+    </div>
+    </div>
 
-  	<!-- STRESS -->
-	{% elif result is equalto "Stressed" %}
-	   <h1>You are probably <div class="emphasis">stressed</div></h1>
+    <!-- STRESS -->
+  {% elif result is equalto "Stressed" %}
+     <h1>You are probably <div class="emphasis">stressed</div></h1>
     <p>Stress is your body’s natural reaction to demand. Simply put it, your body’s <b style="color:#19647e">“fight or flight” alarm</b>. Usually, stress encourages you to get out of danger situations or encourage you to remove your source of stress like work. Sometimes though, your “fight or flight” system doesn’t shut off, and that’s when it becomes a problem.</p>
     <h3 style="color:#19647e">People who were diagnosed as stressed mostly answered:</h3>
     <div class="ui three column grid">
@@ -187,25 +185,12 @@ h1 {
     </div>
     </div>
     </div>
-    <div class="ui middle aligned column">
-     <div class="ui segment">
-    <h3 style="color:teal">Do you think this is true?</h3>
-    Was this diagnosis helpful in any way? Or do you think there was some kind of mistake?<br><br>
-    <center>  
-    <form method="POST"> 
-      {{ form.hidden_tag() }}
-      {{form.yes(class="positive ui large button toggle")}} 
-      {{form.no(class="negative ui large button")}}
-    </form> </center>
-    </div>
-    <br>
+     <div class="ui middle aligned column">
     <div class="ui fluid basic yellow button toggle">Learn more about stress here <i class="right arrow icon"></i></div>
-    </div>
-    </div>
     <br>
     <div class="ui center aligned stacked secondary segment">
       If stress becomes unmanageable, you can always visit the <b>University Health Services</b> and <b>UP Office of Counseling and Guidance</b>.<br>
-      <div class="ui large horizontal divided list" style="color:#800000">
+      <div class="ui large horizontal list" style="color:#800000">
       <div class="item">
         <i class="doctor icon"></i>
         <div class="content">
@@ -220,9 +205,11 @@ h1 {
       </div>
     </div>
     </div>
+    </div>
+    </div>
 
-	<!-- FATIGUE -->
-	{% elif result is equalto "Fatigue" %}
+  <!-- FATIGUE -->
+  {% elif result is equalto "Fatigue" %}
      <h1>You are probably experiencing <div class="emphasis">fatigue</div></h1>
     <p>Simply put, fatigue is being in the constant state of <b style="color:#19647e">physical exhaustion</b>. It is your body’s natural cry for much needed rest or time to recover and think.</p>
     <h3 style="color:#19647e">People who were diagnosed as fatigued mostly answered:</h3>
@@ -276,24 +263,11 @@ h1 {
     </div>
     </div>
     <div class="ui middle aligned column">
-     <div class="ui segment">
-    <h3 style="color:teal">Do you think this is true?</h3>
-    Was this diagnosis helpful in any way? Or do you think there was some kind of mistake?<br><br>
-    <center>  
-    <form method="POST"> 
-      {{ form.hidden_tag() }}
-      {{form.yes(class="positive ui large button toggle")}} 
-      {{form.no(class="negative ui large button")}}
-    </form> </center>
-    </div>
-    <br>
     <div class="ui fluid basic yellow button toggle">Learn more about fatigue here <i class="right arrow icon"></i></div>
-    </div>
-    </div>
     <br>
     <div class="ui center aligned stacked secondary segment">
       If fatigue becomes unmanageable, you can always visit the <b>University Health Services</b> and <b>UP Office of Counseling and Guidance</b>.<br>
-      <div class="ui large horizontal divided list" style="color:#800000">
+      <div class="ui large horizontal list" style="color:#800000">
       <div class="item">
         <i class="doctor icon"></i>
         <div class="content">
@@ -308,10 +282,12 @@ h1 {
       </div>
     </div>
     </div>
+    </div>
+    </div>
 
-	<!-- NORMAL -->
-	{% elif result is equalto "Normal" %}
-   <h1>You are probably just <div class="emphasis">normal</div></h1>
+  <!-- NORMAL -->
+  {% elif result is equalto "Normal" %}
+  <h1>You are probably just <div class="emphasis">normal</div></h1>
     <p><b style="color:#19647e">No need to worry!</b> Even if you experience a few of those things mentioned above, you probably aren't that stressed, burned out, or fatigued.</p>
     <h3 style="color:#19647e">People who were diagnosed as normal mostly answered:</h3>
     <div class="ui three column grid">
@@ -337,23 +313,7 @@ h1 {
       </ul>
       </div>
     </div>
-    <div class="ui two column grid">
-    <div class="column">
-    <div class="ui segment">
-    <h3 style="color:teal">Do you think this is true?</h3>
-    Was this diagnosis helpful in any way? Or do you think there was some kind of mistake?<br><br>
-    <center>  
-    <form method="POST"> 
-      {{ form.hidden_tag() }}
-      {{form.yes(class="positive ui large button toggle")}} 
-      {{form.no(class="negative ui large button")}}
-    </form> </center>
-    </div>
-    <br>
-   
-    </div>
-    <div class="ui middle column">
-    <div class="ui center aligned secondary segment">
+  <div class="ui center aligned secondary segment">
       If you ever feel like something is wrong, you can always visit the <b>University Health Services</b> and <b>UP Office of Counseling and Guidance</b>.<br>
       <div class="ui large horizontal list" style="color:#800000">
       <div class="item">
@@ -370,10 +330,8 @@ h1 {
       </div>
     </div>
     </div>
-    </div>
-    </div>
      <div class="ui fluid basic yellow button toggle">Learn more about different diagnoses here <i class="right arrow icon"></i></div>
-	{% endif %}
+  {% endif %}
 </div>
 <br><br><br><br><br><br>
 </body>

@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_wtf import Form
-from wtforms import StringField, IntegerField, BooleanField, RadioField
+from wtforms import SubmitField, RadioField
 from wtforms.validators import InputRequired
 
 import stresscheck
@@ -35,6 +35,13 @@ class InputForm(Form):
 	exc = RadioField(choices=[('Yes','Yes'),('No','No')], validators=[InputRequired()])
 	esc = RadioField(choices=[('Yes','Yes'),('No','No')], validators=[InputRequired()])
 
+class addForm(Form):
+	yes = SubmitField('Yes')
+	no = SubmitField('No')
+
+class noForm(Form):
+	tru = RadioField(choices=[('Stressed','Stressed'),('Burnout', 'Burnout'),('Fatigue', 'Fatigue'),('Normal','Normal')], validators=[InputRequired()])
+
 @app.route('/', methods=['GET','POST'])
 def index():
 	form = InputForm()
@@ -42,15 +49,13 @@ def index():
 	if form.validate_on_submit():
 		array = [form.anx.data, form.dep.data, form.moo.data, form.res.data, form.mot.data, form.fru.data, form.ind.data, form.foc.data, form.ove.data, form.irr.data, form.des.data, form.con.data, form.hig.data, form.nau.data, form.hea.data, form.ble.data, form.slu.data, form.exh.data, form.fee.data, form.med.data, form.isp.data, form.iep.data, form.exc.data, form.esc.data]
 		print array
+		arr = ""
+		arr = ','.join(array)
 		array = [1 if x == 'Yes' else 0 for x in array]
 		print array
 		result = stresscheck.Predicting(array)
-		# stresscheck.Testing()
-		# dito yung sa tree
-		# aadd sa csv yung data
-		return render_template('main.html', result=result)
-	else:
-		print form.dep.data
+		print arr
+		return redirect(url_for('main', result=result, arr=arr))
 	return render_template('index.html', form=form)
 
 @app.route('/project')
@@ -61,14 +66,41 @@ def project():
 def facts():
 	return render_template('facts.html')
 
-@app.route('/test')
-def test():
-	return render_template('test.html')
 
-@app.route('/main')
+@app.route('/main', methods=['GET', 'POST'])
 def main():
-	result="Stressed"
-	return render_template('main.html', result=result)
+	# result="Stressed"
+	form = addForm()
+	if request.method == 'POST':
+		arr = request.args.get('arr')
+		print arr
+		arr = arr.split(',')
+		arr = [1 if x == 'Yes' else 0 for x in arr]
+		print arr
+		if 'yes' in request.form:
+			stresscheck.unitTestWrite(arr, 1, request.args.get('result'), request.args.get('result'))
+			return redirect(url_for('yes', result=request.args.get('result')))
+		elif 'no' in request.form:
+			return redirect(url_for('no', result=request.args.get('result'), array=request.args.get('arr')))
+	return render_template('main.html', result=request.args.get('result'), form=form)
+
+@app.route('/yes', methods=['GET', 'POST'])
+def yes():
+	return render_template('yes.html', result=request.args.get('result'))
+
+@app.route('/no', methods=['GET', 'POST'])
+def no():
+	form = noForm()
+	if form.validate_on_submit():
+		print form.tru.data
+		arr = request.args.get('array')
+		print arr
+		arr = arr.split(',')
+		arr = [1 if x == 'Yes' else 0 for x in arr]
+		stresscheck.unitTestWrite(arr, 0, request.args.get('result'), form.tru.data)
+		return redirect(url_for('yes', result=request.args.get('result')))
+	return render_template('no.html', result=request.args.get('result'), form=form)
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
