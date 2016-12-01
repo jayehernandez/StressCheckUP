@@ -1,6 +1,6 @@
 backports-abc==0.5
 BeautifulSoup==3.2.1
-CDApplet==1.0
+CDApplet
 CDBashApplet==1.0
 certifi==2016.9.26
 click==6.6
