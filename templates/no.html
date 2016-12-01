@@ -24,6 +24,9 @@ h1 {
   display: inline-block;
   color:#edb850;
 }
+ul {
+  list-style-type:none;
+}
 </style>
 <body>
 <!-- MENU -->
@@ -113,7 +116,7 @@ h1 {
     </div>
     </div>
        <div class="ui middle aligned column">
-    <div class="ui fluid basic yellow button toggle">Learn more about burnout here <i class="right arrow icon"></i></div>
+    <a href="{{ url_for('facts') }}" class="ui fluid basic yellow button toggle">Learn more about burnout here <i class="right arrow icon"></i></a>
     <br>
     <div class="ui center aligned stacked secondary segment">
       If burnout becomes unmanageable, you can always visit the <b>University Health Services</b> and <b>UP Office of Counseling and Guidance</b>.<br>
@@ -186,7 +189,7 @@ h1 {
     </div>
     </div>
      <div class="ui middle aligned column">
-    <div class="ui fluid basic yellow button toggle">Learn more about stress here <i class="right arrow icon"></i></div>
+    <a href="{{ url_for('facts') }}" class="ui fluid basic yellow button toggle">Learn more about stress here <i class="right arrow icon"></i></a>
     <br>
     <div class="ui center aligned stacked secondary segment">
       If stress becomes unmanageable, you can always visit the <b>University Health Services</b> and <b>UP Office of Counseling and Guidance</b>.<br>
@@ -263,7 +266,7 @@ h1 {
     </div>
     </div>
     <div class="ui middle aligned column">
-    <div class="ui fluid basic yellow button toggle">Learn more about fatigue here <i class="right arrow icon"></i></div>
+    <a href="{{ url_for('facts') }}" class="ui fluid basic yellow button toggle">Learn more about fatigue here <i class="right arrow icon"></i></a>
     <br>
     <div class="ui center aligned stacked secondary segment">
       If fatigue becomes unmanageable, you can always visit the <b>University Health Services</b> and <b>UP Office of Counseling and Guidance</b>.<br>
@@ -330,7 +333,7 @@ h1 {
       </div>
     </div>
     </div>
-     <div class="ui fluid basic yellow button toggle">Learn more about different diagnoses here <i class="right arrow icon"></i></div>
+     <a href="{{ url_for('facts') }}" class="ui fluid basic yellow button toggle">Learn more about different diagnoses here <i class="right arrow icon"></i></a>
   {% endif %}
 </div>
 <br><br><br><br><br><br>

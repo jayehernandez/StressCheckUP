@@ -82,6 +82,8 @@ h1 {
   position: fixed;
   bottom: 30px;
   width:55%;
+  margin-left:auto;
+  margin-right:auto;
 }
 </style>
 <body>
@@ -114,6 +116,14 @@ h1 {
       <h1><b>Stress Check UP</b></h1>
       <h2>A Stress Diagnosis App</h2>
       <div class="ui huge button toggle"><i class="treatment icon"></i>Get Checked</div></a>
+      {% if form.errors %}
+      <div class="ui error message">
+      <div class="header">
+        We're sorry! Something went wrong.
+      </div>
+      You failed to answer some questions. Please answer the form once again.
+      </div>
+      {% endif %}
     </div>
   </div></div></div>
   <!-- ANXIETY -->

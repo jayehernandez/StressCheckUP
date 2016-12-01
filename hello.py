@@ -48,13 +48,10 @@ def index():
 	array = []
 	if form.validate_on_submit():
 		array = [form.anx.data, form.dep.data, form.moo.data, form.res.data, form.mot.data, form.fru.data, form.ind.data, form.foc.data, form.ove.data, form.irr.data, form.des.data, form.con.data, form.hig.data, form.nau.data, form.hea.data, form.ble.data, form.slu.data, form.exh.data, form.fee.data, form.med.data, form.isp.data, form.iep.data, form.exc.data, form.esc.data]
-		print array
 		arr = ""
 		arr = ','.join(array)
 		array = [1 if x == 'Yes' else 0 for x in array]
-		print array
 		result = stresscheck.Predicting(array)
-		print arr
 		return redirect(url_for('main', result=result, arr=arr))
 	return render_template('index.html', form=form)
 
@@ -69,7 +66,6 @@ def facts():
 
 @app.route('/main', methods=['GET', 'POST'])
 def main():
-	# result="Stressed"
 	form = addForm()
 	if request.method == 'POST':
 		arr = request.args.get('arr')
