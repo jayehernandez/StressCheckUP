@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 </head>
 <style>
-body{
+body {
   white-space:nowrap;
   overflow:hidden;
 }
@@ -276,27 +276,27 @@ h1 {
   <div class="bar"><div class="progress"></div></div>
   <div class="label">Check UP Progress</div>
 </div> 
-</div><a href="#" id="prev"><i class="huge arrow circle left icon"></i></a>
- <a href="#" id="next"><i class="huge arrow circle right icon"></i></a>
+</div>
+<a href="#" id="prev"><i class="huge arrow circle left icon"></i></a>
+<a href="#" id="next"><i class="huge arrow circle right icon"></i></a>
 <script type="text/javascript">
 $(document).ready(function () {
   var $boxes = $(".question"),
     $current = $boxes.first();
     $("#next").click(function() {
       $current = $current.next(".question");
-      $("body,html").animate({scrollLeft: $($current).offset().left}, 500);
+      $("body,html").animate({scrollLeft: $($current).offset().left}, 800);
     });
     $("#prev").click(function() {
       $current = $current.prev(".question");
-      $("body,html").animate({scrollLeft: $($current).offset().left}, 500);
+      $("body,html").animate({scrollLeft: $($current).offset().left}, 800);
     });
     $(".ui.huge.button.toggle").state();
     $(".ui.huge.button.toggle").click(function() {
       $current = $current.next(".question");
-      $("body,html").animate({scrollLeft: $($current).offset().left}, 500);
+      $("body,html").animate({scrollLeft: $($current).offset().left}, 800);
       $('#example').progress('increment');
-  })
-;
+  });
 });
 </script>
 </body>
